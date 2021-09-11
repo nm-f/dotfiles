@@ -69,8 +69,14 @@ PS1="READY > "
 zinit ice wait'!0'
 
 zt for OMZ::plugins/history/history.plugin.zsh \
-    OMZ::plugins/git/git.plugin.zsh \
-    OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+    OMZ::plugins/git/git.plugin.zsh
+    
+if [[ $OSTYPE == *"linux"* ]]; then
+  zt for OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+elif [[ $OSTYPE == *"darwin"* ]]; then
+  ssh-add -K ~/.ssh/id_rsa
+fi
+
 # HISTORY SUBSTRING SEARCHING
 zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
 zinit light zsh-users/zsh-history-substring-search
@@ -78,6 +84,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
