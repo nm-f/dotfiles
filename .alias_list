@@ -1,2 +1,1 @@
-
-alias update_zshrc="rm ~/.zshrc && wget https://raw.githubusercontent.com/nm-f/dotfiles/main/.zshrc -O ~/.zshrc && && source ~/.zshrc"
+alias update_zshrc="rm ~/.zshrc && rm ~/.alias_list && wget https://raw.githubusercontent.com/nm-f/dotfiles/main/.zshrc -O ~/.zshrc && wget https://raw.githubusercontent.com/nm-f/dotfiles/main/.alias_list -O .alias_list && source ~/.zshrc"
